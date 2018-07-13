@@ -1,0 +1,44 @@
+#端口配置
+server.port=8081
+
+#数据库配置,配置 timezone是为了解决JPA存储时间的问题
+spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
+spring.datasource.url=jdbc:postgresql://192.168.1.230:5432/consumerfinance?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+spring.datasource.username=ztapi
+spring.datasource.password=ztapi123
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+#JPA
+#第一次加载hibernate根据model类自动建立表结构；以后根据model类自动更新表结构；不会删除以前的记录。
+spring.jpa.hibernate.ddl-auto=update
+
+#显示 sql 语句
+spring.jpa.show-sql=true
+
+#连接池配置信息
+spring.datasource.initialSize=5
+spring.datasource.minIdle=5
+spring.datasource.maxActive=20
+spring.datasource.maxWait=6000
+spring.datasource.timeBetweenEvictionRunsMillis=60000
+spring.datasource.minEvictableIdleTimeMillis=300000
+spring.datasource.validationQuery=SELECT 1 FROM DUAL
+spring.datasource.testWhileIdle=true
+spring.datasource.poolPreparedStatements=true
+spring.datasource.maxPoolPreparedStatementPerConnectionSize=20
+spring.datasource.filters=stat,wall,log4j
+spring.datasource.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+#redis
+spring.redis.host=192.168.1.231
+spring.redis.port=6363
+
+#本地配置
+upload.contractFile.path=D:/output/
+person.contractFile.path=D:/output/annex/personContract/
+show.contractFile.path=http://192.168.1.231:8083/contractTempl/
+personShow.contractFile.path=http://192.168.1.231:8083/annex/personContract/
+
+
+#安证通 郑投签章路径
+azt.zhengtou.dat=D:/input/zhengtouwang.dat
