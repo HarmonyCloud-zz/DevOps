@@ -10,9 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>cf-user</module>
-        <module>cf-common</module>
-        <module>cf-thirdPlatForm</module>
+        <module>user</module>
+        <module>common</module>
+        <module>thirdPlatForm</module>
     </modules>
 
     <parent>
