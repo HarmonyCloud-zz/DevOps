@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
 /**
- * 密码验证实现类
+ * 真是姓名验证实现类
  * @author 葛文镇
  */
 public class NameValidator implements ConstraintValidator<Name, String> {

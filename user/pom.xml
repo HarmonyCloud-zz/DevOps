@@ -18,8 +18,8 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.zhengtou</groupId>
-            <artifactId>cf-common</artifactId>
+            <groupId>com.harmony</groupId>
+            <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

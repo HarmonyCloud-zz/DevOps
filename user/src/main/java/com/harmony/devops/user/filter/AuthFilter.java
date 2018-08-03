@@ -1,4 +1,4 @@
-package com.harmony.devops.user.thirdApi.filter;
+package com.harmony.devops.user.filter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

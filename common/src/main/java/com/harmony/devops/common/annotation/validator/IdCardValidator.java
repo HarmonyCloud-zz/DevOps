@@ -6,17 +6,17 @@ import java.util.Date;
 import java.util.regex.Pattern;
 
 /**
- * 密码验证实现类
+ * 身份证验证实现类
  *
  * @author 葛文镇
  */
-public class IdNoValidator implements ConstraintValidator<IdNo, String> {
+public class IdCardValidator implements ConstraintValidator<IdCard, String> {
 
     private String phoneReg = "^(\\\\d{6})(19|20)(\\\\d{2})(1[0-2]|0[1-9])(0[1-9]|[1-2][0-9]|3[0-1])(\\\\d{3})(\\\\d|X|x)?$";
     private Pattern phonePattern = Pattern.compile(phoneReg);
 
     @Override
-    public void initialize(IdNo phone) {
+    public void initialize(IdCard phone) {
 
     }
 

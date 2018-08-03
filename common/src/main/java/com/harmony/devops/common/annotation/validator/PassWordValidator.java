@@ -5,7 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
 /**
- * 密码验证实现类
+ * 密码格式验证实现类
  * @author 葛文镇
  */
 public class PassWordValidator implements ConstraintValidator<PassWord, String> {

@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 手机号认证
+ * 短信认证
  * @author 葛文镇
  */
 @Target({ElementType.FIELD,ElementType.METHOD, ElementType.PARAMETER})

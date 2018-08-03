@@ -1,10 +1,10 @@
-package com.harmony.devops.user.thirdApi.aop;
+package com.harmony.devops.user.aop;
 
 import com.alibaba.fastjson.JSONObject;
+import com.harmony.devops.common.component.redis.MyRedisComponent;
+import com.harmony.devops.common.enums.RtnResultEnum;
+import com.harmony.devops.common.pojo.vo.ErrorFessionVO;
 import com.harmony.devops.user.annotation.Permission;
-import com.zhengtou.cf.common.component.redis.MyRedisComponent;
-import com.zhengtou.cf.common.enums.RtnResultEnum;
-import com.zhengtou.cf.common.pojo.vo.ErrorFessionVO;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -31,7 +31,7 @@ public class ControllerInterceptor {
     /**
      * 定义拦截规则：拦截com.xjj.web.controller包下面的所有类中，有@RequestMapping注解的方法。
      */
-    @Pointcut("execution(* com.zhengtou.cf.*.controller..*(..))")
+    @Pointcut("execution(* com.harmony.*.controller..*(..))")
     public void controllerMethodPointcut(){}
 
     /**
