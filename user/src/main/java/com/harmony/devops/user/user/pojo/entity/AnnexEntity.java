@@ -1,6 +1,6 @@
 package com.harmony.devops.user.user.pojo.entity;
 
-import com.zhengtou.cf.common.pojo.entity.BaseEntity;
+import com.harmony.devops.common.pojo.entity.BaseEntity;
 import com.harmony.devops.user.enums.ZtProductEnum;
 import com.harmony.devops.user.operator.pojo.entity.OrganizationEntity;
 import com.harmony.devops.user.user.pojo.entity.enums.AnnexStatusEnum;
@@ -13,7 +13,6 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "t_annex")
-//TODO 分表操作
 public class AnnexEntity extends BaseEntity {
     //人
     @ManyToOne

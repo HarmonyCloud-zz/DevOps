@@ -1,17 +1,17 @@
 package com.harmony.devops.user.user.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.zhengtou.cf.common.pojo.PeakBaseVo;
-import com.zhengtou.cf.common.utils.StringUtils;
+import com.harmony.devops.common.pojo.PeakBaseVo;
+import com.harmony.devops.common.utils.TimeUtil;
 import com.harmony.devops.user.user.pojo.entity.enums.UserTypeEnum;
-import com.zhengtou.cf.common.utils.TimeUtil;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * Created by 葛文镇
  * email:15258397904@163.com
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BackUserVO extends PeakBaseVo{
+public class BackUserVO extends PeakBaseVo {
     //登陆
     public BackUserVO(Long id, String userNo, long createTime, String nickName, String phone, UserTypeEnum userType, long orgId, Long
             storeId) {

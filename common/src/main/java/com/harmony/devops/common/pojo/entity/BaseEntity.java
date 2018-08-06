@@ -19,49 +19,18 @@ public abstract class BaseEntity extends AbstractEntity implements Serializable 
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    public long id;
     /**
      * 创建时间
      */
-    private long createTime = System.currentTimeMillis();
+    public long createTime = System.currentTimeMillis();
     /**
      * 最后修改时间
      */
-    private long lastModifyTime = createTime;
+    public long lastModifyTime = createTime;
     /**
      * 逻辑删除标志
      */
-    private boolean isDeleted = false;
+    public boolean isDeleted = false;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(long createTime) {
-        this.createTime = createTime;
-    }
-
-    public long getLastModifyTime() {
-        return lastModifyTime;
-    }
-
-    public void setLastModifyTime(long lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
-    }
-
-    public boolean getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 }

@@ -4,7 +4,7 @@
 	<!-- 文件输出格式 -->
 	<property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%thread][%-5p] %c [%L] -| %msg%n" />
 	<!-- test文件路径 -->
-	<property name="TEST_FILE_PATH" value="/home/user/logs" />
+	<property name="TEST_FILE_PATH" value="/home/devops/logs" />
 	<!-- pro文件路径 -->
 	<property name="PRO_FILE_PATH" value="/opt/devops/logs" />
 
@@ -16,7 +16,7 @@
 			</encoder>
 		</appender>
 		
-		<logger name="com.roncoo.education" level="debug"/>
+		<logger name="com.harmony.shiro" level="debug"/>
 
 		<root level="info">
 			<appender-ref ref="CONSOLE" />

@@ -28,7 +28,7 @@ public class BaseDaoImpl implements BaseDao {
     @Override
     @Transactional
     public <T extends BaseEntity> void delete(T o) {
-        o.setIsDeleted(true);
+        o.isDeleted=true;
         this.entityManager.merge(o);
     }
 
