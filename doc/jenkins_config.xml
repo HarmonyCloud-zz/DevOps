@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.12.2">
+    <actions/>
+    <description></description>
+    <keepDependencies>false</keepDependencies>
+    <properties>
+        <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+            <triggers/>
+        </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+    </properties>
+    <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.41">
+        <script>node {
+            def mvnHome
+            def sonarScanner
+            stage("销毁oracle容器"){
+            sh &apos;ssh root@10.194.22.170 docker stop oracle_bdd&apos;
+            sh &apos;ssh root@10.194.22.170 docker rm oracle_bdd&apos;
+            }
+            stage(&apos;运行oracle容器&apos;){
+            sh &apos;ssh root@10.194.22.170 docker run -d --name oracle_bdd -p 1522:1521 -v /root/devops/oracle2/db2:/db
+            -v /root/devops/oracle2/init2:/docker-entrypoint-initdb.d sath89/oracle-12c&apos;
+            }
+            stage(&apos;运行redis容器&apos;){
+            sh &apos;ssh root@10.194.22.170 docker rm -f redis_online1 redis_online2&apos;
+            sh &apos;ssh root@10.194.22.170 docker run --name redis_online1 -d -p 6379:6379 -v
+            /root/devops/redis/redis1.conf:/usr/local/etc/redis/redis.conf redis&apos;
+            sh &apos;ssh root@10.194.22.170 docker run --name redis_online2 -d -p 6479:6379 -v
+            /root/devops/redis/redis2.conf:/usr/local/etc/redis/redis.conf redis&apos;
+            }
+            stage(&apos;拉取代码&apos;) {
+            git branch: &apos;devops&apos;, credentialsId: &apos;o2o_gitlab&apos;, url: &apos;http://10.194.22.166:10080/sunjingfei/O2O.git&apos;
+            mvnHome = tool &apos;maven&apos;
+            sonarScanner = tool &apos;sonar-scanner&apos;
+            }
+            stage(&apos;打包o2o_core模块&apos;) {
+            sh &quot;cd o2o_core &amp;&amp; &apos;${mvnHome}/bin/mvn&apos; clean deploy&quot;
+            }
+            stage(&apos;打包o2o_server模块&apos;) {
+            sh &apos;cp /var/jenkins_home/workspace/web.xml o2o_server/src/main/webapp/WEB-INF&apos;
+            sh &apos;cp /var/jenkins_home/workspace/jdbc.properties /var/jenkins_home/workspace/config.properties
+            o2o_server/configs/fat/&apos;
+            sh &quot;cd o2o_server &amp;&amp; &apos;${mvnHome}/bin/mvn&apos; clean package -P fat -Dmaven.test.skip=true&quot;
+            }
+            stage(&apos;复制o2o_server war包&apos;){
+            sh &apos;scp o2o_server/target/o2o_server-0.0.1.war
+            root@10.194.22.170:/root/devops/weblogic2/o2o_server-0.0.1.war&apos;
+            sh &apos;ssh root@10.194.22.170 rm -rf /root/devops/weblogic2/o2o_server&apos;
+            sh &apos;ssh root@10.194.22.170 mkdir /root/devops/weblogic2/o2o_server&apos;
+            sh &apos;ssh root@10.194.22.170 mv /root/devops/weblogic2/o2o_server-0.0.1.war
+            /root/devops/weblogic2/o2o_server&apos;
+            sh &apos;ssh root@10.194.22.170 chmod -R 777 /root/devops/weblogic2/o2o_server&apos;
+            }
+            stage(&apos;运行weblogic容器&apos;){
+            // sh &apos;ssh root@10.194.22.170 docker rm -f o2o_test&apos;
+            sh &apos;ssh root@10.194.22.170 docker run --name o2o_test -d -p 8001:8001 -p 7001:7001 -p 8002:8002 -p
+            8234:8234 -v /root/devops/weblogic2/o2o_server:/home/weblogic/o2o/o2o_server -v
+            /root/devops/weblogic2/community_o2o:/home/weblogic/o2o/community_o2o -v
+            /root/devops/weblogic2/o2o_task:/home/weblogic/o2o/o2o_task -e weblogic_ip=10.194.22.170 o2o_test:v1&apos;
+            }
+            }
+        </script>
+        <sandbox>true</sandbox>
+    </definition>
+    <triggers/>
+    <disabled>false</disabled>
+</flow-definition>

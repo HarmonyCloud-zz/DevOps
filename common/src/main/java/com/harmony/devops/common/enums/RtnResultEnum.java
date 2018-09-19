@@ -10,43 +10,32 @@ public enum RtnResultEnum {
     U000000(RtnStatusEnum.UNKNOW, "未知异常"),
 
     /**
-     * 账号E00
+     * 数据库异常
      */
-    E000000(RtnStatusEnum.FAIL, "您的手机号尚未注册，请先注册！"),
-    E000001(RtnStatusEnum.FAIL, "密码错误，请输入正确的密码！"),
-    E000002(RtnStatusEnum.FAIL, "您的手机号已经注册，可以直接登录！"),
-    E000003(RtnStatusEnum.FAIL, "您还未登录账号，请先登录在继续操作！"),
-    E000004(RtnStatusEnum.FAIL, "您的交易密码不正确，请输入正确的交易密码！"),
-    E000005(RtnStatusEnum.FAIL, "您的个人资料不全，请补全个人信息！"),
-    E000006(RtnStatusEnum.FAIL, "您已经设置交易密码！"),
-    E000007(RtnStatusEnum.FAIL, "请完成绑卡操作！"),
+    E000000(RtnStatusEnum.FAIL, "系统异常，未查询到该条数据"),
 
     /**
-     * 验证码E01
+     * 权限
      */
-    E010000(RtnStatusEnum.FAIL, "您的短信验证码错误！"),
-    E010001(RtnStatusEnum.FAIL, "该证件号对应风控数据不为空！"),
-    E010002(RtnStatusEnum.FAIL, "您的短信验证码已过期，请重新获取！"),
-    E010003(RtnStatusEnum.FAIL, "您的图片验证码已过期，请重新获取！"),
-    E010004(RtnStatusEnum.FAIL, "您的图片验证码错误！"),
-    E010005(RtnStatusEnum.FAIL, "验证码发送失败！"),
+    E010000(RtnStatusEnum.FAIL, "请再次检查登陆用户名和密码！"),
+    E010001(RtnStatusEnum.FAIL, "请先登陆"),
+    E010002(RtnStatusEnum.FAIL, "您没有该权限！"),
 
     /**
-     * 交易E02
+     * 业务E02
      */
-    E020000(RtnStatusEnum.FAIL, "银行卡添加错误，请检查您的银行卡信息！"),
-    E020001(RtnStatusEnum.FAIL, "银行卡不存在错误！"),
-    E020002(RtnStatusEnum.FAIL, "该卡为默认卡不支持解绑，请先设置为普通卡"),
+    E020000(RtnStatusEnum.FAIL, "请选择正确的机构！"),
+    E020001(RtnStatusEnum.FAIL, "请选择正确的部门！"),
+    E020002(RtnStatusEnum.FAIL, "验证码错误！"),
 
     /**
      * 入参验证E03
      */
     E030000(RtnStatusEnum.FAIL, "请确保参数填写正确！"),
-    E030001(RtnStatusEnum.FAIL, "未查询到该数据！"),
-    E030002(RtnStatusEnum.FAIL, "您的短信验证码已过期，请重新获取！"),
-    E030003(RtnStatusEnum.FAIL, "您的图片验证码已过期，请重新获取！"),
-    E030004(RtnStatusEnum.FAIL, "您的图片验证码错误！"),
-    E030005(RtnStatusEnum.FAIL, "存在关联数据，请先删除！"),
+    E030001(RtnStatusEnum.FAIL, "角色不可为空！"),
+    E030002(RtnStatusEnum.FAIL, "请选择正确的权限角色！"),
+    E030003(RtnStatusEnum.FAIL, "资源不可为空！"),
+    E030004(RtnStatusEnum.FAIL, "请选择正确的资源名称！"),
 
     /**
      * 组织架构相关E04
@@ -167,63 +156,7 @@ public enum RtnResultEnum {
     E220003(RtnStatusEnum.FAIL, "请选择该用户所属机构"),
     E220004(RtnStatusEnum.FAIL, "订单审批中，请耐心等候"),
 
-//    CARD_BINDING_ERROR("2000000", "银行卡添加错误，请检查您的银行卡信息！"),
-//    CARD_NOT_EXIST_ERROR("2000001", "银行卡不存在错误！"),
-
-//    REGISTER_SMS_CODE_AUTH_ERROR("1000004", "您的短信验证码错误！"),
-//    REGISTER_SMS_CODE_GET_ERROR("1000005", "您的短信验证码获取频繁，请间隔60秒在获取！"),
-//    REGISTER_SMS_CODE_EXCEED_ERROR("1000006", "您的短信验证码已过期，请重新获取！"),
-//    REGISTER_PNG_CODE_ERROR("1000007", "请输入正确的图片验证码！"),
-//    TOKEN_AUTH_ERROR("1000008", "您还未登录账号，请先登录在继续操作！"),
-//    PNG_CODE_EXCEED_ERROR("1000009", "您的图片验证码已过期，请重新获取！"),
-
-
     E0000xx(RtnStatusEnum.FAIL, "失败");
-    /*00收银台*/
-    /*01交易*/
-    /*02核心支付*/
-    /*03渠道*/
-    /*04账务*/
-    /*05清算*/
-
-    /*交易E01*/
-//    E000000(RtnStatusEnum.FAIL, "失败"),
-//    E000001(RtnStatusEnum.FAIL, "查询的订单不存在"),
-//    E000002(RtnStatusEnum.FAIL, "修改失败"),
-//    E000003(RtnStatusEnum.FAIL, "订单状态失败"),
-//    E000004(RtnStatusEnum.FAIL, "持久化订单异常"),
-//    E000005(RtnStatusEnum.FAIL, "签约失败"),
-//    E000006(RtnStatusEnum.FAIL, "操作失败签约已经成功"),
-//    E000007(RtnStatusEnum.FAIL, "签约信息不存在"),
-//    E000008(RtnStatusEnum.FAIL, "解约失败"),
-//    E000009(RtnStatusEnum.FAIL, "签约失败"),
-//    E000010(RtnStatusEnum.FAIL, "该银行卡已经签约过"),
-//
-//    /*核心支付E02*/
-//    E020001(RtnStatusEnum.FAIL, "短信入库失败"),
-//    E020002(RtnStatusEnum.FAIL, "短信更新失败"),
-//    E020003(RtnStatusEnum.FAIL, "实名认证失败"),
-//    E020004(RtnStatusEnum.FAIL, "订单入库失败"),
-//
-//    /*渠道E03*/
-//    E030000(RtnStatusEnum.FAIL, "支付工具银行未配置"),
-//    E030001(RtnStatusEnum.FAIL, "支付工具银行编码为空"),
-//    E030002(RtnStatusEnum.FAIL, "支付工具与渠道未配置映射"),
-//    E030003(RtnStatusEnum.FAIL, "支付工具没有可用的渠道"),
-//    E030004(RtnStatusEnum.FAIL, "渠道未找到相应的机构"),
-//    E030005(RtnStatusEnum.FAIL, "机构未找到相应的商户号"),
-//    E030006(RtnStatusEnum.FAIL, "商户号未找到对应的配置"),
-//    E030007(RtnStatusEnum.FAIL, "路由按权重筛选异常渠道信息为空"),
-//    E030008(RtnStatusEnum.FAIL, "路由认证渠道未配置"),
-//
-//    E030101(RtnStatusEnum.FAIL, "未知主机名"),
-//    E030102(RtnStatusEnum.FAIL, "连接超时"),
-//    E030103(RtnStatusEnum.UNKNOW, "读取超时"),
-//    E030104(RtnStatusEnum.UNKNOW, "通信超"),
-//    E030105(RtnStatusEnum.FAIL, "该渠道前置未配置"),
-//
-//    E030201(RtnStatusEnum.FAIL, "拼装报文异常"),
-//    E030202(RtnStatusEnum.UNKNOW, "报文解析异常");
 
     RtnResultEnum(RtnStatusEnum status, String msg) {
         this.status = status;
